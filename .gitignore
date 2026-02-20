@@ -1,0 +1,14 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+
+# parcel cache
+.parcel-cache/
+
+#tester
+tester.html
+
+#Data
+Data/
