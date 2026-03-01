@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 export default function Header(){
     return(
         <div className="bg-[#ff5200] text-white">
@@ -55,9 +57,9 @@ export default function Header(){
 
             <div className="max-w-[80%] my-0 mx-auto flex pb-10">
                 <div>
-                    <a href="https://www.swiggy.com/restaurants">
+                    <Link to="/restaurants">
                         <img src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/MERCHANDISING_BANNERS/IMAGES/MERCH/2024/7/23/ec86a309-9b06-48e2-9adc-35753f06bc0a_Food3BU.png" className="w-full h-full"></img>
-                    </a>
+                    </Link>
                 </div>
                 <div>
                     <a href="https://www.swiggy.com/instamart?entryId=1234&entryName=mainTileEntry4&v=1">

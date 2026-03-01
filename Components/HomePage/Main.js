@@ -1,6 +1,6 @@
-import { foodData } from "../Data/FoodData";
-import { instamartData } from "../Data/InstamartData";
-import {dineoutRestaurants} from "../Data/DineoutRestroData";
+import { foodData } from "../../Data/FoodData";
+import { instamartData } from "../../Data/InstamartData";
+import {dineoutRestaurants} from "../../Data/DineoutRestroData";
 
 export default function Main(){
     return(
@@ -51,7 +51,7 @@ export default function Main(){
                             <div className=" mr-4 rounded-2xl border-2 border-[#02060c14] h-fit" key={value.info.id}>
                     <button className="flex flex-col " >
                         <div className="w-81.5 h-47.25 relative">
-                        <img src={`https://media-assets.swiggy.com/swiggy/image/upload/${value.info.mediaFiles[0].url}`} className="h-full w-full object-cover rounded-t-2xl" ></img>
+                        <img src={`https://media-assets.swiggy.com/swiggy/image/upload/${value.info.mediaFiles[0].url}`} className="h-full w-full object-cover rounded-t-2xl shadow-[0_-0px_4px_rgba(0,0,0,0.4)" ></img>
                         <div className="absolute inset-0 bg-linear-to-t  from-black/80 via-black/0 to-transparent"></div>
                         <div className="flex justify-between absolute bottom-2 text-white z-10 min-w-full px-3 font-extrabold text-[20px] gap-5 max-w-full">
                             <div className="whitespace-nowrap overflow-x-hidden text-ellipsis ">{value.info.name}</div>
