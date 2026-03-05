@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 export default function Upper({ data }) {
     return (
         <div className="mt-20">
@@ -37,9 +39,9 @@ export default function Upper({ data }) {
                         (value) => {
                             const subheader = value.info?.aggregatedDiscountInfoV3?.subHeader;
                             return (
+                                <Link to={"/city/Delhi/"+value.info?.name+"-"+value.info?.areaName+"-"+"rest"+value.info?.id} key={value.info?.id}>
                                 <div
                                     className=" mr-4 h-fit w-70 flex-none transform transition hover:scale-95 duration-100"
-                                    key={value.info?.id}
                                 >
                                     <button className="flex flex-col w-full h-fit cursor-pointer">
                                         <div className="w-full h-46 relative rounded-2xl">
@@ -84,6 +86,7 @@ export default function Upper({ data }) {
                                         </div>
                                     </button>
                                 </div>
+                                </Link>
                             );
                         },
                     )}

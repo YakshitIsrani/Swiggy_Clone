@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 export default function Restaurants({data}){
     return(
         <div className="max-w-[80%] pt-10 pb-20 mx-auto">
@@ -12,6 +14,7 @@ export default function Restaurants({data}){
                         (value) => {
                             const subheader = value.info?.aggregatedDiscountInfoV3?.subHeader;
                             return (
+                                <Link to={"/city/Delhi/"+value.info?.name+"-"+value.info?.areaName+"-"+"rest"+value.info?.id} key={value.info?.id}>
                                 <div
                                     className=" mr-4 h-fit w-70 transform transition hover:scale-95 duration-100 "
                                     key={value.info?.id}
@@ -59,6 +62,7 @@ export default function Restaurants({data}){
                                         </div>
                                     </button>
                                 </div>
+                                </Link>
                             );
                         },
                     )}
