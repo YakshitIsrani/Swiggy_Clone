@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router"
 import Shimmer from "../FoodDelivery/Shimmer";
+import RestHeader from "./RestHeader";
+import RestMenu from "./RestMenu";
 
-export default function RestaurantMenu(){
+export default function Restaurant(){
 
     const [data,setData]=useState(null);
 
@@ -33,8 +35,12 @@ export default function RestaurantMenu(){
         // return(<div>Fetching Restaurants data</div>)
         return(<Shimmer></Shimmer>);
     }
+    const FoodMenuData=data?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
 
     return(
-        <div>Data Fetched Successfully and id is :{id}</div>
+        <>
+        <RestHeader></RestHeader>
+        <RestMenu FoodMenuData={FoodMenuData}></RestMenu>
+        </>
     )
 }

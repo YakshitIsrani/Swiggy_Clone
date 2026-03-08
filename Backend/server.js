@@ -13,7 +13,8 @@ app.get("/api/restaurants", async (req, res) => {
           "User-Agent": "Mozilla/5.0",
           "Accept": "application/json",
           "Referer": "https://www.swiggy.com/",
-          "Origin": "https://www.swiggy.com"
+          "Origin": "https://www.swiggy.com",
+          "Cookie": "your browser cookie on the header request of the API"
         }
       }
     );

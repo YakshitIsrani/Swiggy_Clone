@@ -10,7 +10,5 @@ dist/
 #tester
 HomePageSwiggyTester.html
 
-#Data
-Data/
 
 Backend/node_modules/

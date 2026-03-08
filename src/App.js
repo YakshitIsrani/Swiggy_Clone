@@ -4,7 +4,7 @@ import "./index.css";
 import HomePage from "../Components/HomePage/HomePage";
 import {BrowserRouter, Routes, Route} from "react-router"
 import FoodDelivery from "../Components/FoodDelivery/FoodDelivery";
-import RestaurantMenu from "../Components/RestaurantMenu/RestaurantMenu";
+import Restaurant from "../Components/Restaurant/Restaurant"
 
 
 
@@ -15,7 +15,7 @@ function App(){
         <Routes>
             <Route path="/" element={<HomePage></HomePage>}></Route>
             <Route path="/restaurants" element={<FoodDelivery></FoodDelivery>}></Route>
-            <Route path="/city/Delhi/:rest" element={<RestaurantMenu></RestaurantMenu>}></Route>
+            <Route path="/city/Delhi/:rest" element={<Restaurant></Restaurant>}></Route>
         </Routes>
         </BrowserRouter>
         </>
