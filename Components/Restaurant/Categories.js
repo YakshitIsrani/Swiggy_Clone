@@ -3,18 +3,44 @@ import RestItemDescri from "./RestItemDescri";
 import { svg } from "../../public/food/SVGs";
 const { vegSvg, nonVegSvg, bestSellerSvg, darkGreenRatingStar, lightGreenRatingStar, yellowRatingStar, downArrowSvg, upArrowSvg } = svg;
 
-export default function Categories({value}) {
-    
-    const [expanded,setExpanded]=useState(false);
-    return (
+export default function Categories({ value, filter, bestSellerFilter }) {
+
+    const [expanded, setExpanded] = useState(false);
+    const filteredItems = value?.itemCards.filter((value) => {
+        if (filter === "veg") {
+            if (value?.card?.info?.isVeg)
+                return true
+            else return false
+        }
+        else if (filter === "nonVeg") {
+            if (!("isVeg" in value?.card?.info))
+                return true
+            else return false
+        }
+        else return true
+    })
+    const doubleFilteredItems = filteredItems.filter((value) => {
+        if (bestSellerFilter == true) {
+            if (value?.card?.info?.ribbon?.text === "Bestseller") {
+                return true
+            }
+            else return false
+        }
+        else return true
+    })
+
+    if (doubleFilteredItems.length == 0)
+        return (null);
+
+    else return (
         <div className={"pt-5 border-b border-b-gray-300 " + (expanded ? "" : "pb-5")}>
             <div className="flex justify-between cursor-pointer" onClick={() => setExpanded(!expanded)}>
-                <div className="font-bold text-[16px] text-[#02060ceb]">{value?.title + " (" + value?.itemCards.length + ")"}</div>
+                <div className="font-bold text-[16px] text-[#02060ceb]">{value?.title + " (" + doubleFilteredItems.length + ")"}</div>
                 <div>{expanded ? upArrowSvg : downArrowSvg}</div>
             </div>
 
             {expanded &&
-                value?.itemCards.map((value) => {
+                doubleFilteredItems.map((value) => {
                     const rating = Number(value?.card?.info?.ratings?.aggregatedRating?.rating);
                     const ratingCount = Number(value?.card?.info?.ratings?.aggregatedRating?.ratingCountV2);
 
@@ -24,7 +50,7 @@ export default function Categories({value}) {
                                 <div>
                                     <div className="flex items-center gap-1">
                                         <span>{(("isVeg" in value?.card?.info) ? vegSvg : nonVegSvg)}</span>
-                                        <span>{!(isNaN(rating)) && (rating >= 4.1) && (ratingCount >= 100) && bestSellerSvg}</span>
+                                        <span>{(value?.card?.info?.ribbon?.text === "Bestseller") && bestSellerSvg}</span>
                                     </div>
 
                                     <div className="font-bold text-[18px] text-[#02060cbf]">{value?.card?.info?.name}</div>
