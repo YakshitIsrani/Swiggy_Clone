@@ -30,4 +30,8 @@ const crossSvg=<svg width="18px" height="18px" viewBox="0 0 24 24" >
     </g>
 </svg>
 
+const upArrowSvg=svg.upArrowSvg;
+const downArrowSvg=svg.downArrowSvg;
+
 export const svg2={vegSvg,nonVegSvg,crossSvg}
+export const svg3={upArrowSvg,downArrowSvg}

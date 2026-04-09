@@ -1,7 +1,9 @@
 import { useState } from "react";
-import RestItemDescri from "./RestItemDescri";
-import { svg } from "../../public/food/SVGs";
-const { vegSvg, nonVegSvg, bestSellerSvg, darkGreenRatingStar, lightGreenRatingStar, yellowRatingStar, downArrowSvg, upArrowSvg } = svg;
+import FoodItemCard from "./FoodItemCard";
+import { svg3 } from "../../public/food/SVGs";
+
+const {upArrowSvg,downArrowSvg}=svg3;
+
 
 export default function SingleMenu({ value, filter, bestSellerFilter }) {
 
@@ -41,60 +43,9 @@ export default function SingleMenu({ value, filter, bestSellerFilter }) {
             </div>
             {expanded &&
                 doubleFilteredItems.map((value) => {
-                    const rating = Number(value?.card?.info?.ratings?.aggregatedRating?.rating);
-                    const ratingCount = Number(value?.card?.info?.ratings?.aggregatedRating?.ratingCountV2);
 
                     return (
-                        <div className="flex w-full justify-between py-8 border-b border-b-gray-300" key={value?.card?.info?.id}>
-                            <div className="max-w-138">
-                                <div>
-                                    <div className="flex items-center gap-1">
-                                        <span>{(("isVeg" in value?.card?.info) ? vegSvg : nonVegSvg)}</span>
-                                        <span>{(value?.card?.info?.ribbon?.text === "Bestseller")&& bestSellerSvg}</span>
-                                    </div>
-
-                                    <div className="font-bold text-[18px] text-[#02060cbf]">{value?.card?.info?.name}</div>
-
-                                    <div className="text-[16px] font-bold text-[#02060ceb] mb-3">₹{(value?.card?.info?.defaultPrice) ? ((value?.card?.info?.defaultPrice) / 100) : ((value?.card?.info?.price) / 100)}</div>
-                                </div>
-
-                                {!(isNaN(rating)) &&
-                                    <div className="flex gap-0.5 items-center mb-3">
-                                        <span>
-                                            {(rating >= 4 ? darkGreenRatingStar : rating >= 2.7 ? lightGreenRatingStar : yellowRatingStar)}
-                                        </span>
-
-                                        <span className={(rating >= 4 ? "text-[#116649]" : rating >= 2.7 ? "text-[#1BA672]" : "text-[#E6A408]") + " font-bold text-[14px]"}>   {rating}
-                                        </span>
-
-                                        <span className="font-bold text-[14px] text-[#02060c99]">
-                                            {"(" + ratingCount + ")"}
-                                        </span>
-                                    </div>
-                                }
-
-                                <RestItemDescri desc={value?.card?.info?.description}></RestItemDescri>
-
-                            </div>
-
-                            <div className="flex flex-col">
-                                <div className="flex flex-col items-center relative">
-                                    <img src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/" + value.card.info.imageId} className="h-39 w-41 object-cover rounded-xl"></img>
-
-                                    <div className="absolute w-fit h-fit top-33 z-10">
-                                        <button className="w-30 h-10 rounded-xl flex justify-center items-center text-[#1ba672] text-[18px] font-bold bg-white border  border-[#25282c66] z-20 cursor-pointer">ADD</button>
-                                    </div>
-                                </div>
-
-                                {
-                                    (("variantGroups" in value?.card?.info?.variantsV2) || ("addons" in value?.card?.info)) &&
-                                    <div className="w-full flex justify-center items-center mt-6 text-[#25282ca6] text-[15px] font-medium">
-                                        <div>Customizable</div>
-                                    </div>
-                                }
-
-                            </div>
-                        </div>
+                        <FoodItemCard value={value} key={value?.card?.info?.id}></FoodItemCard>
                     )
                 })
             }

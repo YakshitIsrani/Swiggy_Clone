@@ -2,9 +2,10 @@ import SingleMenu from "./SingleMenu";
 import DualMenu from "./DualMenu";
 import { svg2 } from "../../public/food/SVGs";
 import { useState } from "react";
+import { Link } from "react-router";
 
 
-export default function RestMenu({ FoodMenuData }) {
+export default function RestMenu({ FoodMenuData,rest }) {
     const [filter, setFilter] = useState(null);
     const [bestSellerFilter,setBestSellerFilter] = useState(false);
 
@@ -32,6 +33,13 @@ export default function RestMenu({ FoodMenuData }) {
     return (
         <div className="mt-20 w-[55%] mx-auto">
             <div className="px-5">
+                <Link to={"/city/Delhi/"+rest+"/search"}>
+                <div className="h-12.5 rounded-2xl flex items-center justify-center bg-[#02060c1a] mb-5  relative cursor-pointer">
+                    <div className="text-[16px] font-bold text-[#02060c99]">Search for dishes</div>
+                    <div className="absolute right-4"><img src="https://img.icons8.com/?size=100&id=59878&format=png&color=000000" className="w-5 h-5"></img></div>
+                </div>
+                </Link>
+
                 <div className="flex gap-5 mb-5">
                     <div className="border border-[#02060c26] rounded-3xl px-5 flex items-center">
                         <button

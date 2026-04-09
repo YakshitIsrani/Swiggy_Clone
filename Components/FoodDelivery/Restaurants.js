@@ -13,8 +13,10 @@ export default function Restaurants({data}){
                     {data.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants.map(
                         (value) => {
                             const subheader = value.info?.aggregatedDiscountInfoV3?.subHeader;
+                            const restURL=value.info?.name+"-"+value.info?.areaName+"-rest"+value.info?.id;
+                            const cleanRestURL=restURL.replaceAll(" ","+");
                             return (
-                                <Link to={"/city/Delhi/"+value.info?.name+"-"+value.info?.areaName+"-"+"rest"+value.info?.id} key={value.info?.id}>
+                                <Link to={"/city/Delhi/"+cleanRestURL} key={value.info?.id}>
                                 <div
                                     className=" mr-4 h-fit w-70 transform transition hover:scale-95 duration-100 "
                                     key={value.info?.id}

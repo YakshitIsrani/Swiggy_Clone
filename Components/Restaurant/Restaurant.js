@@ -40,7 +40,7 @@ export default function Restaurant(){
     return(
         <>
         <RestHeader></RestHeader>
-        <RestMenu FoodMenuData={FoodMenuData}></RestMenu>
+        <RestMenu FoodMenuData={FoodMenuData} rest={rest}></RestMenu>
         </>
     )
 }
